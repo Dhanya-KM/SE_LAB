@@ -40,8 +40,27 @@ class Blackjack:
 
         deck = Deck()
 
-        player = [deck.draw(), deck.draw()]
-        dealer = [deck.draw(), deck.draw()]
+        player = []
+        dealer = []
+
+        # Initial deal with empty-deck protection
+        for _ in range(2):
+            card = deck.draw()
+
+            if card is None:
+                print("Deck is empty.")
+                return True
+
+            player.append(card)
+
+        for _ in range(2):
+            card = deck.draw()
+
+            if card is None:
+                print("Deck is empty.")
+                return True
+
+            dealer.append(card)
 
         self.show(player, dealer)
 
